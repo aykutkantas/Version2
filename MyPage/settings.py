@@ -4,11 +4,12 @@ from django.conf import settings
 import django_heroku
 import dj_database_url
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 
 # Quick-start development settings - unsuitable for production
@@ -186,7 +187,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 
-PLACES_MAPS_API_KEY=os.environ.get('PLACES_MAPS_API_KEY')
+PLACES_MAPS_API_KEY=print(os.environ.get('PLACES_MAPS_API_KEY'))
 PLACES_MAP_WIDGET_HEIGHT=300
 PLACES_MAP_OPTIONS='{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
 PLACES_MARKER_OPTIONS='{"draggable": true}'
@@ -202,8 +203,8 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 524288056565665
 
 CLOUDINARY_STORAGE = {
 'CLOUD_NAME':'dbfmaljuh',
-'API_KEY': '376978896398661',
-'API_SECRET':os.environ.get('API_SECRET')
+'API_KEY': config('API_KEY'),
+'API_SECRET':config('API_SECRET'),
 }
 
 
